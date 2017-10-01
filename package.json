@@ -1,0 +1,36 @@
+{
+  "name": "SkeletalRigging",
+  "version": "0.0.1",
+  "description": "A simple skeletal rig made in JavaScript and canvas",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest && yarn lint",
+    "test:coverage": "yarn jest -- --coverage && yarn lint",
+    "lint": "eslint -c eslint.config.json . --ext .js",
+    "lint:fix": "eslint -c eslint.config.json . --ext .js --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.55.0",
+    "jest": "^21.2.1",
+    "uglifyjs-webpack-plugin": "^0.3.6",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "dependencies": {
+    "eslint-config-standard": "^10.2.1"
+  }
+}

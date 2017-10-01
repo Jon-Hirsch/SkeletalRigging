@@ -1,0 +1,49 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "extends": ["standard"],
+  "rules": {
+    "arrow-parens": "off",
+    "class-methods-use-this": "off",
+    "comma-dangle": "off",
+    "consistent-return": "off",
+    "eol-last": "off",
+    "func-names": "off",
+    "import/no-named-as-default-member": "warn",
+    "import/first": "off",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "max-len": "off",
+    "max-nested-callbacks": "off",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-extra-semi": "off",
+    "no-plusplus": "warn",
+    "no-param-reassign": "off",
+    "no-prototype-builtins": "warn",
+    "no-restricted-syntax": "warn",
+    "no-underscore-dangle": "off",
+    "no-unused-expressions": "off",
+    "no-undef": "off",
+    "no-use-before-define": "off",
+    "prefer-arrow-callback": "off",
+    "prefer-default-export": "off",
+    "quote-props": "off",
+    "quotes": "off",
+    "semi": "off",
+    "space-before-function-paren": "off"
+  }
+}

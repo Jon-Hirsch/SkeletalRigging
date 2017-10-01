@@ -1,0 +1,8 @@
+{
+  "collectCoverageFrom": [
+    "src/js/**/*.js"
+  ],
+  "setupTestFrameworkScriptFile": "./entry.js",
+  "testMatch": ["/tests/**/*.test.js"],
+  "coverageDirectory": "../coverage/"
+}
