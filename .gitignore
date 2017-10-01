@@ -2,3 +2,5 @@
 /dist/bundle.js
 /coverage
 .idea
+.idea/workspace.xml
+yarn-error.log

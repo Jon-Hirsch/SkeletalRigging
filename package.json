@@ -25,7 +25,6 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "flow-bin": "^0.55.0",
     "jest": "^21.2.1",
     "uglifyjs-webpack-plugin": "^0.3.6",
     "webpack": "^3.6.0",

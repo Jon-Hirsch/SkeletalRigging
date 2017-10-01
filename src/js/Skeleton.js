@@ -7,15 +7,15 @@ export default class Skeleton {
     const chestBone = new Bone(300, 320, 200, degreesToRadians(270), context);
     this.bones.push(chestBone);
 
-    const leftUpperArm = new Bone(75, 0, 75,degreesToRadians(-90), context);
+    const leftUpperArm = new Bone(75, 0, 75, degreesToRadians(-90), context);
     chestBone.addChild(leftUpperArm);
     this.bones.push(leftUpperArm);
 
-    const leftForearm = new Bone(0, 0, 75,degreesToRadians(45), context);
+    const leftForearm = new Bone(0, 0, 75, degreesToRadians(45), context);
     leftUpperArm.addChild(leftForearm);
     this.bones.push(leftForearm);
 
-    const rightUpperArm = new Bone(75, 0, 75,degreesToRadians(90), context);
+    const rightUpperArm = new Bone(75, 0, 75, degreesToRadians(90), context);
     chestBone.addChild(rightUpperArm);
     this.bones.push(rightUpperArm);
 
@@ -38,6 +38,8 @@ export default class Skeleton {
     const rightLowerLeg = new Bone(0, 0, 75, degreesToRadians(25), context);
     rightUpperLeg.addChild(rightLowerLeg);
     this.bones.push(rightLowerLeg);
+
+    this.calculateCoordinates();
   }
 
   draw() {

@@ -1,5 +1,3 @@
-// @flow
-
 const circleRadius = 10;
 export default class Bone {
   constructor(x, y, lineLength, angle, context) {
@@ -22,7 +20,7 @@ export default class Bone {
     this.children.push(child);
   }
 
-  calculateCoordinates () {
+  calculateCoordinates() {
     this.absoluteAngle = this.angle;
     if (this.parent) {
       this.absoluteAngle += this.parent.absoluteAngle;
@@ -30,7 +28,7 @@ export default class Bone {
       this.absoluteY = -1 * (this.x * Math.sin(this.parent.absoluteAngle) + this.y * Math.cos(this.parent.absoluteAngle));
       this.absoluteX += this.parent.endX;
       this.absoluteY += this.parent.endY;
-    }else{
+    } else {
       this.absoluteX = this.x;
       this.absoluteY = this.y;
     }
@@ -66,6 +64,10 @@ export default class Bone {
     if (this.parent) {
       this.angle -= this.parent.absoluteAngle;
     }
-    this.calcCoordinates();
+    this.calculateCoordinates();
+  }
+
+  checkMouse(x, y) {
+    return Math.abs(x - this.endX) <= circleRadius && Math.abs(y - this.endY) <= circleRadius;
   }
 }
