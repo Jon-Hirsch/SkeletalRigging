@@ -10,6 +10,6 @@ function initSkeletalRigging () {
   if (container) {
     container.appendChild(canvas);
     const manager = new CanvasManager(canvas);
-    manager.start();
+    manager.draw();
   }
 }

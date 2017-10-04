@@ -17,8 +17,9 @@ export default class CanvasManager {
     this.canvas.addEventListener('mouseup', this.handleMouseUp);
   }
 
-  start() {
-    this.draw();
+  draw() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.skeleton.draw();
   }
 
   handleMouseDown() {
@@ -39,12 +40,7 @@ export default class CanvasManager {
       this.draw();
     } else {
       this.currentHoverBone = this.skeleton.bones.find(bone => bone.checkMouse(x, y));
-      this.canvas.style.cursor = this.currentHoverBone ? 'pointer' : 'cursor';
+      this.canvas.style.cursor = this.currentHoverBone ? 'pointer' : 'default';
     }
-  }
-
-  draw() {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.skeleton.draw();
   }
 }

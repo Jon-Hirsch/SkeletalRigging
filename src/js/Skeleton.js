@@ -1,4 +1,5 @@
 import Bone from './Bone';
+import { degreesToRadians } from './helpers';
 
 export default class Skeleton {
   constructor(context) {
@@ -49,8 +50,4 @@ export default class Skeleton {
   calculateCoordinates() {
     this.bones[0].calculateCoordinates();
   }
-}
-
-function degreesToRadians(degrees) {
-  return degrees * (Math.PI / 180);
 }

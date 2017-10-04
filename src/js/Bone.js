@@ -7,12 +7,13 @@ export default class Bone {
     this.angle = angle;
     this.context = context;
     this.children = [];
-    this.absolulteX = 0;
+    this.absoluteX = 0;
     this.absoluteY = 0;
     this.absoluteAngle = 0;
     this.endX = 0;
     this.endY = 0;
     this.parent = null;
+    this.calculateCoordinates();
   }
 
   addChild(child) {
