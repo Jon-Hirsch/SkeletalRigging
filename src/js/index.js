@@ -1,6 +1,6 @@
 import CanvasManager from './CanvasManager';
 
-document.addEventListener('DOMContentLoaded', initSkeletalRigging);
+initSkeletalRigging();
 
 function initSkeletalRigging() {
   const container = document.getElementById('SkeletalRiggingContainer');
@@ -16,6 +16,7 @@ function initSkeletalRigging() {
 function populateContainer(container) {
   container.innerHTML = '';
   const canvas = document.createElement('canvas');
+  canvas.style.border = '1px solid';
   resizeCanvas(canvas);
   container.appendChild(canvas);
   const manager = new CanvasManager(canvas);
