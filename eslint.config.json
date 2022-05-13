@@ -1,20 +1,9 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true
-    }
-  },
   "env": {
     "browser": true,
     "node": true,
     "es6": true,
     "jest": true
-  },
-  "settings": {
-    "import/resolver": "webpack"
   },
   "extends": ["standard"],
   "rules": {
@@ -31,7 +20,7 @@
     "max-nested-callbacks": "off",
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-extra-semi": "off",
-    "no-plusplus": "warn",
+    "no-plusplus": "off",
     "no-param-reassign": "off",
     "no-prototype-builtins": "warn",
     "no-restricted-syntax": "warn",

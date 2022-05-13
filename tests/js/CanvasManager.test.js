@@ -7,14 +7,14 @@ const context = {
   stroke: jest.fn(),
   closePath: jest.fn(),
   arc: jest.fn(),
-  clearRect: jest.fn()
+  clearRect: jest.fn(),
 };
 
 const canvas = {
   getContext: () => context,
   addEventListener: jest.fn(),
   getBoundingClientRect: () => ({ top: 10, left: 10 }),
-  style: {}
+  style: {},
 };
 
 describe('CanvasManager', () => {
@@ -34,11 +34,18 @@ describe('CanvasManager', () => {
   });
 
   describe('handleMouseDown', () => {
-    test('sets the current drag bone to equal the current hover bone', () => {
+    test('it sets currentDragBone to any bone that has its drag point at the mouse coordinates', () => {
       const canvasManager = new CanvasManager(canvas);
-      canvasManager.currentHoverBone = 'hover bone';
-      canvasManager.handleMouseDown();
-      expect(canvasManager.currentDragBone).toEqual('hover bone');
+      canvasManager.skeleton.bones[1].endX = 10;
+      canvasManager.skeleton.bones[1].endY = 10;
+      canvasManager.handleMouseDown({
+        clientX: 20,
+        clientY: 20,
+        preventDefault: () => {},
+      });
+      expect(canvasManager.currentDragBone).toEqual(
+        canvasManager.skeleton.bones[1]
+      );
     });
   });
 
@@ -59,13 +66,24 @@ describe('CanvasManager', () => {
         canvasManager.currentDragBone = { pointToward: jest.fn() };
       });
       test('it calls the bones pointToward method with the mouse coordinates relative to the canvas', () => {
-        canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
-        expect(canvasManager.currentDragBone.pointToward).toHaveBeenCalledWith(10, 10);
+        canvasManager.handleMouseMove({
+          clientX: 20,
+          clientY: 20,
+          preventDefault: () => {},
+        });
+        expect(canvasManager.currentDragBone.pointToward).toHaveBeenCalledWith(
+          10,
+          10
+        );
       });
 
       test('it calls draw', () => {
         canvasManager.draw = jest.fn();
-        canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
+        canvasManager.handleMouseMove({
+          clientX: 20,
+          clientY: 20,
+          preventDefault: () => {},
+        });
         expect(canvasManager.draw).toHaveBeenCalled();
       });
     });
@@ -79,19 +97,33 @@ describe('CanvasManager', () => {
       test('it sets currentHoverBone to any bone that has its drag point at the mouse coordinates', () => {
         canvasManager.skeleton.bones[1].endX = 10;
         canvasManager.skeleton.bones[1].endY = 10;
-        canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
-        expect(canvasManager.currentHoverBone).toEqual(canvasManager.skeleton.bones[1]);
+        canvasManager.handleMouseMove({
+          clientX: 20,
+          clientY: 20,
+          preventDefault: () => {},
+        });
+        expect(canvasManager.currentHoverBone).toEqual(
+          canvasManager.skeleton.bones[1]
+        );
       });
 
       test('it sets the canvas cursor style to pointer if a hover bone is found', () => {
         canvasManager.skeleton.bones[1].endX = 10;
         canvasManager.skeleton.bones[1].endY = 10;
-        canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
+        canvasManager.handleMouseMove({
+          clientX: 20,
+          clientY: 20,
+          preventDefault: () => {},
+        });
         expect(canvasManager.canvas.style.cursor).toEqual('pointer');
       });
 
       test('it sets the canvas cursor style to default if a hover bone is not found', () => {
-        canvasManager.handleMouseMove({ clientX: 20, clientY: 20 });
+        canvasManager.handleMouseMove({
+          clientX: 20,
+          clientY: 20,
+          preventDefault: () => {},
+        });
         expect(canvasManager.canvas.style.cursor).toEqual('default');
       });
     });
