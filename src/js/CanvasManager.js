@@ -4,7 +4,8 @@ export default class CanvasManager {
   constructor(canvas) {
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
-    this.skeleton = new Skeleton(this.context);
+    const scale = canvas.width / 600; // default width is 600px, but can scale down to fit window
+    this.skeleton = new Skeleton(this.context, scale);
     this.currentHoverBone = null;
     this.currentDragBone = null;
 
@@ -31,9 +32,7 @@ export default class CanvasManager {
   handleMouseDown(event) {
     const { x, y } = this.getEventCoordinates(event);
 
-    this.currentDragBone = this.skeleton.bones.find((bone) =>
-      bone.checkMouse(x, y)
-    );
+    this.currentDragBone = this.skeleton.bones.find((bone) => bone.checkMouse(x, y));
   }
 
   handleMouseUp() {
@@ -47,9 +46,7 @@ export default class CanvasManager {
       this.currentDragBone.pointToward(x, y);
       this.draw();
     } else {
-      this.currentHoverBone = this.skeleton.bones.find((bone) =>
-        bone.checkMouse(x, y)
-      );
+      this.currentHoverBone = this.skeleton.bones.find((bone) => bone.checkMouse(x, y));
       this.canvas.style.cursor = this.currentHoverBone ? 'pointer' : 'default';
     }
   }

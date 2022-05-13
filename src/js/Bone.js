@@ -1,9 +1,9 @@
 const circleRadius = 10;
 export default class Bone {
-  constructor(x, y, lineLength, angle, context) {
-    this.x = x;
-    this.y = y;
-    this.lineLength = lineLength;
+  constructor(x, y, lineLength, angle, context, scale = 1) {
+    this.x = x * scale;
+    this.y = y * scale;
+    this.lineLength = lineLength * scale;
     this.angle = angle;
     this.context = context;
     this.children = [];
@@ -25,8 +25,14 @@ export default class Bone {
     this.absoluteAngle = this.angle;
     if (this.parent) {
       this.absoluteAngle += this.parent.absoluteAngle;
-      this.absoluteX = -1 * (this.x * Math.cos(this.parent.absoluteAngle) - this.y * Math.sin(this.parent.absoluteAngle));
-      this.absoluteY = -1 * (this.x * Math.sin(this.parent.absoluteAngle) + this.y * Math.cos(this.parent.absoluteAngle));
+      this.absoluteX =
+        -1 *
+        (this.x * Math.cos(this.parent.absoluteAngle) -
+          this.y * Math.sin(this.parent.absoluteAngle));
+      this.absoluteY =
+        -1 *
+        (this.x * Math.sin(this.parent.absoluteAngle) +
+          this.y * Math.cos(this.parent.absoluteAngle));
       this.absoluteX += this.parent.endX;
       this.absoluteY += this.parent.endY;
     } else {
@@ -37,7 +43,7 @@ export default class Bone {
     this.endX = this.absoluteX + this.lineLength * Math.cos(this.absoluteAngle);
     this.endY = this.absoluteY + this.lineLength * Math.sin(this.absoluteAngle);
 
-    this.children.forEach(child => child.calculateCoordinates());
+    this.children.forEach((child) => child.calculateCoordinates());
   }
 
   draw() {
@@ -55,7 +61,7 @@ export default class Bone {
     this.context.stroke();
     this.context.closePath();
 
-    this.children.forEach(child => child.draw());
+    this.children.forEach((child) => child.draw());
   }
 
   pointToward(pointX, pointY) {
